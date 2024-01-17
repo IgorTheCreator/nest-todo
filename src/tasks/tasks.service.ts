@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateGroupDto } from 'src/groups/dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateTaskDto } from './dto';
@@ -15,8 +15,8 @@ export class TasksService {
         },
       });
       return tasks;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new InternalServerErrorException(err);
     }
   }
 
@@ -28,8 +28,8 @@ export class TasksService {
         },
       });
       return task;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new InternalServerErrorException(err);
     }
   }
 
@@ -42,8 +42,8 @@ export class TasksService {
         },
       });
       return createdTask;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new InternalServerErrorException(err);
     }
   }
 
@@ -59,8 +59,8 @@ export class TasksService {
         },
       });
       return updatedTask;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new InternalServerErrorException(err);
     }
   }
 
@@ -75,8 +75,8 @@ export class TasksService {
         },
       });
       return updatedTask;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new InternalServerErrorException(err);
     }
   }
 }

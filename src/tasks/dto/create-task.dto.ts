@@ -1,5 +1,5 @@
 import { createZodDto } from 'nestjs-zod';
-import { z } from 'zod';
+import { z } from 'nestjs-zod/z';
 
 export const TaskSchema = z.object({
   title: z.string().max(64),

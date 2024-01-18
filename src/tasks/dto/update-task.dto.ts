@@ -1,5 +1,5 @@
-import { z } from 'zod';
+import { createZodDto } from 'nestjs-zod';
 import { TaskSchema } from './create-task.dto';
 
 const PartialTaskSchema = TaskSchema.partial();
-export type UpdateTaskDto = z.infer<typeof PartialTaskSchema>;
+export class UpdateTaskDto extends createZodDto(PartialTaskSchema) {}

@@ -1,5 +1,5 @@
-import {z} from 'zod'
-import { GroupSchema } from "./create-group.dto";
+import { CreateGroupSchema } from './create-group.dto';
+import { createZodDto } from 'nestjs-zod';
 
-const PartialGroupSchema = GroupSchema.partial()
-export type UpdateGroupDto = z.infer<typeof PartialGroupSchema>
+const PartialUpdateGroupSchema = CreateGroupSchema.partial();
+export class UpdateGroupDto extends createZodDto(PartialUpdateGroupSchema) {}

@@ -79,4 +79,16 @@ export class TasksService {
       throw new InternalServerErrorException(err);
     }
   }
+
+  async deleteTask(id: number) {
+    try {
+      await this.prismaService.task.delete({
+        where: {
+          id,
+        },
+      });
+    } catch (err) {
+      throw new InternalServerErrorException(err);
+    }
+  }
 }

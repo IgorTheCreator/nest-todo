@@ -61,6 +61,14 @@
 
 Задание оформить в виде репозитория с `README.md` в котором будут шаги запуска.
 
+## Stack
+
+```
+NestJS
+PrismaORM
+PostgreSQL
+```
+
 ## Installation
 
 ```bash
@@ -78,4 +86,9 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+## Swagger Documentation
+
+```
+localhost:3000/api
 ```

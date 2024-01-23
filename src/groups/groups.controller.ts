@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   HttpStatus,
   Param,
   ParseIntPipe,
@@ -16,6 +17,7 @@ import {
   ApiBody,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
+  ApiNoContentResponse,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -96,6 +98,7 @@ export class GroupsController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Delete group' })
   @ApiParam({
     name: 'id',
@@ -103,7 +106,7 @@ export class GroupsController {
     required: true,
     description: 'Group identifier',
   })
-  @ApiOkResponse({ description: 'Success' })
+  @ApiNoContentResponse({ description: 'Success' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiInternalServerErrorResponse({ description: 'Something went wrong' })
   async deleteGroup(

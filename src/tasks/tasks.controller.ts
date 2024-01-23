@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   ParseBoolPipe,
   ParseIntPipe,
@@ -15,6 +17,7 @@ import {
   ApiBadRequestResponse,
   ApiBody,
   ApiInternalServerErrorResponse,
+  ApiNoContentResponse,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -108,6 +111,7 @@ export class TasksController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Delete task' })
   @ApiParam({
     name: 'id',
@@ -115,7 +119,7 @@ export class TasksController {
     required: true,
     description: 'Task identifier',
   })
-  @ApiOkResponse({ description: 'Success' })
+  @ApiNoContentResponse({ description: 'Success' })
   @ApiBadRequestResponse({ description: 'Bad request' })
   @ApiInternalServerErrorResponse({ description: 'Something went wrong' })
   async deleteTask(@Param('id', ParseIntPipe) taskId: number): Promise<void> {
